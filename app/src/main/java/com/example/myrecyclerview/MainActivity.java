@@ -38,21 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void showRecyclerList(){
-        rv_Heroes.setLayoutManager(new LinearLayoutManager(this));
-
-        ListHeroAdapter listHeroAdapter = new ListHeroAdapter(list);
-
-        rv_Heroes.setAdapter(listHeroAdapter);
-
-        listHeroAdapter.setOnItemClickCallback(new ListHeroAdapter.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(Hero data) {
-                showSelectedHero(data);
-            }
-        });
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu (Menu menu) {
@@ -95,12 +80,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    private void showRecyclerList(){
+        rv_Heroes.setLayoutManager(new LinearLayoutManager(this));
+
+        ListHeroAdapter listHeroAdapter = new ListHeroAdapter(list);
+
+        rv_Heroes.setAdapter(listHeroAdapter);
+
+        listHeroAdapter.setOnItemClickCallback(new ListHeroAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(Hero data) {
+                showSelectedHero(data);
+            }
+        });
+
+    }
+
     private void showRecyclerCardView(){
         rv_Heroes.setLayoutManager(new LinearLayoutManager(this));
 
         CardViewHeroAdapter cardViewHeroAdapter = new CardViewHeroAdapter(list);
 
         rv_Heroes.setAdapter(cardViewHeroAdapter);
+
+
 
 
     }
@@ -111,6 +115,13 @@ public class MainActivity extends AppCompatActivity {
         GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
 
         rv_Heroes.setAdapter(gridHeroAdapter);
+
+        gridHeroAdapter.setOnItemClickCallback(new GridHeroAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(Hero data) {
+                showSelectedHero(data);
+            }
+        });
     }
 
     private void setActionBarTitle(String title) {
