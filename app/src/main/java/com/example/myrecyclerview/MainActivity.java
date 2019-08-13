@@ -2,6 +2,7 @@ package com.example.myrecyclerview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -81,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_grid:
+                title = "Mode Grid";
+                setActionBarTitle(title);
+                showRecyclerGrid();
                 break;
 
             case R.id.action_cardview:
@@ -99,6 +103,14 @@ public class MainActivity extends AppCompatActivity {
         rv_Heroes.setAdapter(cardViewHeroAdapter);
 
 
+    }
+
+    private void showRecyclerGrid(){
+        rv_Heroes.setLayoutManager(new GridLayoutManager(this, 2));
+
+        GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
+
+        rv_Heroes.setAdapter(gridHeroAdapter);
     }
 
     private void setActionBarTitle(String title) {
